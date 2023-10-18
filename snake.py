@@ -11,6 +11,9 @@ RIGHT = 360
 class Snake:
     def __init__(self):
         self.segments = []
+        self.original_snake()
+
+    def original_snake(self):
         for pos in positions:
             new_turtle = Turtle()
             new_turtle.shape('square')
@@ -21,6 +24,7 @@ class Snake:
             self.segments.append(new_turtle)
         self.head = self.segments[-1]
         self.is_dead = 0
+
 
     def move(self):
         for i in range(0,len(self.segments)-1):
@@ -71,6 +75,19 @@ class Snake:
         self.head.xcor() < -290 or
         self.head.ycor() > 290 or
         self.head.ycor() < -290):
-            self.is_dead = 1
+            self.goback_to_the_start_position(scores)
+            # self.is_dead = 1
             scores.write_score(-1)
+
+    def goback_to_the_start_position(self,score: Score):
+        for i in range(len(self.segments)):
+            move_faraway = self.segments[i]
+            move_faraway.goto(5000,5000)
+            score.clear_score()
+        self.segments.clear()
+        print(self.segments)
+        self.original_snake()
+        print(self.segments)
+
+
 
