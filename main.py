@@ -1,4 +1,3 @@
-import random
 import time
 from turtle import Screen,Turtle
 from snake import Snake
@@ -42,7 +41,7 @@ while snake.is_dead == 0:
     snake.distance_food(food,score)
     snake.distance_self(score)
     snake.distance_wall(score)
-    time.sleep(1)
+    time.sleep(0.08)
     screen.update()
 
 screen.exitonclick()
